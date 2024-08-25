@@ -1,0 +1,19 @@
+{
+  "title": [
+    {
+      "locale": "en",
+      "content": "Diabetes Mellitus Screening Followup Form"
+    },
+    {
+      "locale": "ne",
+      "content": "मधुमेहको स्क्रीनिङ"
+    }
+  ],
+  "context": {
+    "place": false,
+    "person": true,
+    "expression": "contact.name === 'kaithea kumar'"
+  },
+  "icon": "icon-diabetes",
+  "hidden_fields": []
+}

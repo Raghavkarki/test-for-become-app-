@@ -1,0 +1,1164 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>New Person</h:title>
+    <model>
+      <itext>
+        <translation lang="en">
+          <text id="/data/c82_person/add_phone/no:label">
+            <value>No</value>
+          </text>
+          <text id="/data/c82_person/add_phone/yes:label">
+            <value>Yes</value>
+          </text>
+          <text id="/data/c82_person/add_phone:hint">
+            <value>Only if it is different from the household head.</value>
+          </text>
+          <text id="/data/c82_person/add_phone:label">
+            <value>Does the person have a different phone number?</value>
+          </text>
+          <text id="/data/c82_person/caste_code/brahmin:label">
+            <value>Brahmin</value>
+          </text>
+          <text id="/data/c82_person/caste_code/chhettri:label">
+            <value>Chhetri</value>
+          </text>
+          <text id="/data/c82_person/caste_code/dalit:label">
+            <value>Dalit</value>
+          </text>
+          <text id="/data/c82_person/caste_code/janajati:label">
+            <value>Janajati</value>
+          </text>
+          <text id="/data/c82_person/caste_code/madhesi:label">
+            <value>Madhesi</value>
+          </text>
+          <text id="/data/c82_person/caste_code/muslim:label">
+            <value>Muslim</value>
+          </text>
+          <text id="/data/c82_person/caste_code/other:label">
+            <value>Other</value>
+          </text>
+          <text id="/data/c82_person/caste_code:label">
+            <value>Caste code</value>
+          </text>
+          <text id="/data/c82_person/date_of_birth:hint">
+            <value>If you don't know the day, you can put 1</value>
+          </text>
+          <text id="/data/c82_person/date_of_birth:jr:constraintMsg">
+            <value>Date of birth can not be in the future.</value>
+          </text>
+          <text id="/data/c82_person/date_of_birth:label">
+            <value>Date of Birth (in Bikram Sambat)</value>
+          </text>
+          <text id="/data/c82_person/disability/autism:label">
+            <value>Autism</value>
+          </text>
+          <text id="/data/c82_person/disability/deaf_blind:label">
+            <value>Deaf blind</value>
+          </text>
+          <text id="/data/c82_person/disability/hearing_impairment:label">
+            <value>Hearing Impairment</value>
+          </text>
+          <text id="/data/c82_person/disability/intellectual_disability:label">
+            <value>Intellectual disability</value>
+          </text>
+          <text id="/data/c82_person/disability/mental_psychosocial_disability:label">
+            <value>Mental and psychosocial disability</value>
+          </text>
+          <text id="/data/c82_person/disability/physical_disability:label">
+            <value>Physical disability</value>
+          </text>
+          <text id="/data/c82_person/disability/visual_impairment:label">
+            <value>Visual impairment</value>
+          </text>
+          <text id="/data/c82_person/disability/voice_disabilities:label">
+            <value>Speech and voice disabilities</value>
+          </text>
+          <text id="/data/c82_person/disability:label">
+            <value>What is the type of disability?</value>
+          </text>
+          <text id="/data/c82_person/disability_card/no:label">
+            <value>No</value>
+          </text>
+          <text id="/data/c82_person/disability_card/yes:label">
+            <value>Yes</value>
+          </text>
+          <text id="/data/c82_person/disability_card:label">
+            <value>Does the person have disability card ?</value>
+          </text>
+          <text id="/data/c82_person/disability_severity/complete_disability:label">
+            <value>Complete disability</value>
+          </text>
+          <text id="/data/c82_person/disability_severity/extreme_disability:label">
+            <value>Extreme disability</value>
+          </text>
+          <text id="/data/c82_person/disability_severity/general_disability:label">
+            <value>General disability</value>
+          </text>
+          <text id="/data/c82_person/disability_severity/moderate_disability:label">
+            <value>Moderate disability</value>
+          </text>
+          <text id="/data/c82_person/disability_severity:label">
+            <value>Severity</value>
+          </text>
+          <text id="/data/c82_person/disability_start/after_birth:label">
+            <value>After Birth</value>
+          </text>
+          <text id="/data/c82_person/disability_start/from_birth:label">
+            <value>From Birth</value>
+          </text>
+          <text id="/data/c82_person/disability_start:label">
+            <value>When did the disability start?</value>
+          </text>
+          <text id="/data/c82_person/disability_start_date:hint">
+            <value>Please put "1" if day is not known, and "Baisakh" if month is not known.</value>
+          </text>
+          <text id="/data/c82_person/disability_start_date:label">
+            <value>Disability start date (in Bikram Sambat):</value>
+          </text>
+          <text id="/data/c82_person/first_name:jr:constraintMsg">
+            <value>Must be 30 letters or less</value>
+          </text>
+          <text id="/data/c82_person/first_name:label">
+            <value>First Name</value>
+          </text>
+          <text id="/data/c82_person/gender/female:label">
+            <value>Female</value>
+          </text>
+          <text id="/data/c82_person/gender/male:label">
+            <value>Male</value>
+          </text>
+          <text id="/data/c82_person/gender/other:label">
+            <value>Other</value>
+          </text>
+          <text id="/data/c82_person/gender:label">
+            <value>Gender</value>
+          </text>
+          <text id="/data/c82_person/is_disabled/no:label">
+            <value>No</value>
+          </text>
+          <text id="/data/c82_person/is_disabled/yes:label">
+            <value>Yes</value>
+          </text>
+          <text id="/data/c82_person/is_disabled:label">
+            <value>Is the person disabled?</value>
+          </text>
+          <text id="/data/c82_person/last_name:jr:constraintMsg">
+            <value>Must be 30 letters or less</value>
+          </text>
+          <text id="/data/c82_person/last_name:label">
+            <value>Last Name</value>
+          </text>
+          <text id="/data/c82_person/level_of_education/basic_education:label">
+            <value>Basic education</value>
+          </text>
+          <text id="/data/c82_person/level_of_education/graduation_level:label">
+            <value>Graduation level</value>
+          </text>
+          <text id="/data/c82_person/level_of_education/higher_secondary level:label">
+            <value>Higher secondary level</value>
+          </text>
+          <text id="/data/c82_person/level_of_education/literate:label">
+            <value>Literate</value>
+          </text>
+          <text id="/data/c82_person/level_of_education/lliterate:label">
+            <value>lliterate</value>
+          </text>
+          <text id="/data/c82_person/level_of_education/phd:label">
+            <value>PHD</value>
+          </text>
+          <text id="/data/c82_person/level_of_education/post_graduate:label">
+            <value>Post graduate</value>
+          </text>
+          <text id="/data/c82_person/level_of_education/secondary_level:label">
+            <value>Secondary level</value>
+          </text>
+          <text id="/data/c82_person/level_of_education:hint">
+            <value>Select one below</value>
+          </text>
+          <text id="/data/c82_person/level_of_education:label">
+            <value>Level of education completed</value>
+          </text>
+          <text id="/data/c82_person/marital_status/didnt_say:label">
+            <value>I do not want to say</value>
+          </text>
+          <text id="/data/c82_person/marital_status/divorced:label">
+            <value>Divorced</value>
+          </text>
+          <text id="/data/c82_person/marital_status/living_in:label">
+            <value>Living in</value>
+          </text>
+          <text id="/data/c82_person/marital_status/married:label">
+            <value>Married</value>
+          </text>
+          <text id="/data/c82_person/marital_status/unmarried:label">
+            <value>Unmarried</value>
+          </text>
+          <text id="/data/c82_person/marital_status/widowed:label">
+            <value>Widowed</value>
+          </text>
+          <text id="/data/c82_person/marital_status:label">
+            <value>Marital status</value>
+          </text>
+          <text id="/data/c82_person/occupation/agriculture:label">
+            <value>Agriculture</value>
+          </text>
+          <text id="/data/c82_person/occupation/builder:label">
+            <value>Builder</value>
+          </text>
+          <text id="/data/c82_person/occupation/business:label">
+            <value>Business</value>
+          </text>
+          <text id="/data/c82_person/occupation/carpenter:label">
+            <value>Carpenter</value>
+          </text>
+          <text id="/data/c82_person/occupation/homemaker:label">
+            <value>Homemaker</value>
+          </text>
+          <text id="/data/c82_person/occupation/job:label">
+            <value>Job</value>
+          </text>
+          <text id="/data/c82_person/occupation/others:label">
+            <value>Others</value>
+          </text>
+          <text id="/data/c82_person/occupation/painter:label">
+            <value>Painter</value>
+          </text>
+          <text id="/data/c82_person/occupation/porter:label">
+            <value>Porter</value>
+          </text>
+          <text id="/data/c82_person/occupation/sewing_knitting:label">
+            <value>Sewing/knitting</value>
+          </text>
+          <text id="/data/c82_person/occupation/student:label">
+            <value>Student</value>
+          </text>
+          <text id="/data/c82_person/occupation/unemployed:label">
+            <value>Unemployed</value>
+          </text>
+          <text id="/data/c82_person/occupation:label">
+            <value>Occupation</value>
+          </text>
+          <text id="/data/c82_person/phone:jr:constraintMsg">
+            <value>Please enter a valid local number, or use the standard international format, which includes a plus sign (+) and country code. For example: +9779841239876</value>
+          </text>
+          <text id="/data/c82_person/phone:label">
+            <value>Phone Number</value>
+          </text>
+          <text id="/data/c82_person/relation/brother_sister:label">
+            <value>Brother/sister</value>
+          </text>
+          <text id="/data/c82_person/relation/brother_sister_inlaw:label">
+            <value>Brother-in-law or sister-in-law</value>
+          </text>
+          <text id="/data/c82_person/relation/dont_know:label">
+            <value>I don't know</value>
+          </text>
+          <text id="/data/c82_person/relation/grand_son_daughter:label">
+            <value>Grandson or granddaughter</value>
+          </text>
+          <text id="/data/c82_person/relation/house_head:label">
+            <value>House head</value>
+          </text>
+          <text id="/data/c82_person/relation/mother_father:label">
+            <value>Mother or father</value>
+          </text>
+          <text id="/data/c82_person/relation/mother_father_inlaw:label">
+            <value>Mother-in-law or father-in-law</value>
+          </text>
+          <text id="/data/c82_person/relation/niece_nephew:label">
+            <value>Niece/nephew</value>
+          </text>
+          <text id="/data/c82_person/relation/no_relationship:label">
+            <value>No relationship</value>
+          </text>
+          <text id="/data/c82_person/relation/others:label">
+            <value>Other relatives</value>
+          </text>
+          <text id="/data/c82_person/relation/second_wife:label">
+            <value>Second wife</value>
+          </text>
+          <text id="/data/c82_person/relation/son_daughter:label">
+            <value>Son or daughter</value>
+          </text>
+          <text id="/data/c82_person/relation/son_daughter_adopted:label">
+            <value>Adoped son/daughter</value>
+          </text>
+          <text id="/data/c82_person/relation/son_daughter_inlaw:label">
+            <value>Son-in-law or daughter-in-law</value>
+          </text>
+          <text id="/data/c82_person/relation/wife_husband:label">
+            <value>Wife or husband</value>
+          </text>
+          <text id="/data/c82_person/relation:label">
+            <value>Relation with household head</value>
+          </text>
+          <text id="/data/c82_person/religion/buddhist:label">
+            <value>Buddhist</value>
+          </text>
+          <text id="/data/c82_person/religion/christian:label">
+            <value>Christian</value>
+          </text>
+          <text id="/data/c82_person/religion/didnt_say:label">
+            <value>Didn't say</value>
+          </text>
+          <text id="/data/c82_person/religion/hindu:label">
+            <value>Hindu</value>
+          </text>
+          <text id="/data/c82_person/religion/kirat:label">
+            <value>Kirat</value>
+          </text>
+          <text id="/data/c82_person/religion/muslim:label">
+            <value>Muslim</value>
+          </text>
+          <text id="/data/c82_person/religion/others:label">
+            <value>Others</value>
+          </text>
+          <text id="/data/c82_person/religion:label">
+            <value>Religion</value>
+          </text>
+          <text id="/data/init/note_required_fields:hint">
+            <value>(*required field)</value>
+          </text>
+          <text id="/data/init/parent_id:hint">
+            <value><output value=" /data/init/type_label "/></value>
+          </text>
+          <text id="/data/init/parent_id:label">
+            <value>Belongs To</value>
+          </text>
+          <text id="/data/init/type_selector/c80_household:label">
+            <value>Household</value>
+          </text>
+        </translation>
+        <translation lang="ne">
+          <text id="/data/c82_person/add_phone/no:label">
+            <value>छैन</value>
+          </text>
+          <text id="/data/c82_person/add_phone/yes:label">
+            <value>छ</value>
+          </text>
+          <text id="/data/c82_person/add_phone:hint">
+            <value>घरमुलीको फोन नम्बर भन्दा फरक भए मात्र राख्नुहोस्।</value>
+          </text>
+          <text id="/data/c82_person/add_phone:label">
+            <value>के उहाँको छुट्टै फोन नम्बर छ?</value>
+          </text>
+          <text id="/data/c82_person/caste_code/brahmin:label">
+            <value>ब्राह्मण</value>
+          </text>
+          <text id="/data/c82_person/caste_code/chhettri:label">
+            <value>क्षेत्री</value>
+          </text>
+          <text id="/data/c82_person/caste_code/dalit:label">
+            <value>दलित</value>
+          </text>
+          <text id="/data/c82_person/caste_code/janajati:label">
+            <value>जनजाति</value>
+          </text>
+          <text id="/data/c82_person/caste_code/madhesi:label">
+            <value>मधेसी</value>
+          </text>
+          <text id="/data/c82_person/caste_code/muslim:label">
+            <value>मुस्लिम</value>
+          </text>
+          <text id="/data/c82_person/caste_code/other:label">
+            <value>अन्य</value>
+          </text>
+          <text id="/data/c82_person/caste_code:label">
+            <value>जाति कोड</value>
+          </text>
+          <text id="/data/c82_person/date_of_birth:hint">
+            <value>जन्म मिति थाहा नभएमा '१' लेख्नुहोस्</value>
+          </text>
+          <text id="/data/c82_person/date_of_birth:jr:constraintMsg">
+            <value>जन्म मिति भविष्यमा हुन सक्दैन।</value>
+          </text>
+          <text id="/data/c82_person/date_of_birth:label">
+            <value>जन्म मिति (वि. स.)</value>
+          </text>
+          <text id="/data/c82_person/disability/autism:label">
+            <value>अटिज्म</value>
+          </text>
+          <text id="/data/c82_person/disability/deaf_blind:label">
+            <value>श्रवण दृष्टिविहीन अपाङ्गता</value>
+          </text>
+          <text id="/data/c82_person/disability/hearing_impairment:label">
+            <value>सुनाइ सम्बन्धी अपाङ्गता</value>
+          </text>
+          <text id="/data/c82_person/disability/intellectual_disability:label">
+            <value>बौद्धिक अपाङ्गता</value>
+          </text>
+          <text id="/data/c82_person/disability/mental_psychosocial_disability:label">
+            <value>मानसिक र मनोसामाजिक अशक्तता</value>
+          </text>
+          <text id="/data/c82_person/disability/physical_disability:label">
+            <value>शारीरिक अपाङ्गता</value>
+          </text>
+          <text id="/data/c82_person/disability/visual_impairment:label">
+            <value>दृष्टि सम्बन्धी अपाङ्गता</value>
+          </text>
+          <text id="/data/c82_person/disability/voice_disabilities:label">
+            <value>बोली र स्वर संग सम्बन्धी अपाङ्गता</value>
+          </text>
+          <text id="/data/c82_person/disability:label">
+            <value>कस्तो प्रकारको अपाङ्गता छ?</value>
+          </text>
+          <text id="/data/c82_person/disability_card/no:label">
+            <value>छैन</value>
+          </text>
+          <text id="/data/c82_person/disability_card/yes:label">
+            <value>छ</value>
+          </text>
+          <text id="/data/c82_person/disability_card:label">
+            <value>अपाङ्गता-अशक्तता कार्ड बनाउनु भएको छ ?</value>
+          </text>
+          <text id="/data/c82_person/disability_severity/complete_disability:label">
+            <value>पूर्णअशक्त अपाङ्गता</value>
+          </text>
+          <text id="/data/c82_person/disability_severity/extreme_disability:label">
+            <value>अतिअशक्त अपाङ्गता</value>
+          </text>
+          <text id="/data/c82_person/disability_severity/general_disability:label">
+            <value>सामान्य अपाङ्गता</value>
+          </text>
+          <text id="/data/c82_person/disability_severity/moderate_disability:label">
+            <value>मध्यम अपाङ्गता</value>
+          </text>
+          <text id="/data/c82_person/disability_severity:label">
+            <value>जटिलता</value>
+          </text>
+          <text id="/data/c82_person/disability_start/after_birth:label">
+            <value>जन्म पछि</value>
+          </text>
+          <text id="/data/c82_person/disability_start/from_birth:label">
+            <value>जन्मजात</value>
+          </text>
+          <text id="/data/c82_person/disability_start:label">
+            <value>कहिले देखि समस्या सुरु भएको?</value>
+          </text>
+          <text id="/data/c82_person/disability_start_date:hint">
+            <value>गते थाहा नभए "१", महिना थाहा नभए "बैशाख" राख्नुहोस्।</value>
+          </text>
+          <text id="/data/c82_person/disability_start_date:label">
+            <value>समस्या सुरु भएको मिति (वि. स.):</value>
+          </text>
+          <text id="/data/c82_person/first_name:jr:constraintMsg">
+            <value>नाम ३० अक्षर वा सो भन्दा कम हुनुपर्छ।</value>
+          </text>
+          <text id="/data/c82_person/first_name:label">
+            <value>नाम</value>
+          </text>
+          <text id="/data/c82_person/gender/female:label">
+            <value>महिला</value>
+          </text>
+          <text id="/data/c82_person/gender/male:label">
+            <value>पुरुष</value>
+          </text>
+          <text id="/data/c82_person/gender/other:label">
+            <value>अन्य</value>
+          </text>
+          <text id="/data/c82_person/gender:label">
+            <value>लिंग</value>
+          </text>
+          <text id="/data/c82_person/is_disabled/no:label">
+            <value>छैन</value>
+          </text>
+          <text id="/data/c82_person/is_disabled/yes:label">
+            <value>छ</value>
+          </text>
+          <text id="/data/c82_person/is_disabled:label">
+            <value>के उहाँमा अपाङ्गता छ ?</value>
+          </text>
+          <text id="/data/c82_person/last_name:jr:constraintMsg">
+            <value>थर ३० अक्षर वा सो भन्दा कम हुनुपर्छ।</value>
+          </text>
+          <text id="/data/c82_person/last_name:label">
+            <value>थर</value>
+          </text>
+          <text id="/data/c82_person/level_of_education/basic_education:label">
+            <value>आधारभुत शिक्षा</value>
+          </text>
+          <text id="/data/c82_person/level_of_education/graduation_level:label">
+            <value>स्नातक तह</value>
+          </text>
+          <text id="/data/c82_person/level_of_education/higher_secondary level:label">
+            <value>उच्च माध्यमिक तह</value>
+          </text>
+          <text id="/data/c82_person/level_of_education/literate:label">
+            <value>साक्षर</value>
+          </text>
+          <text id="/data/c82_person/level_of_education/lliterate:label">
+            <value>निरक्षर</value>
+          </text>
+          <text id="/data/c82_person/level_of_education/phd:label">
+            <value>विद्यावारिधी</value>
+          </text>
+          <text id="/data/c82_person/level_of_education/post_graduate:label">
+            <value>स्नाकोत्तर तह</value>
+          </text>
+          <text id="/data/c82_person/level_of_education/secondary_level:label">
+            <value>माध्यमिक तह</value>
+          </text>
+          <text id="/data/c82_person/level_of_education:hint">
+            <value>एउटा छान्नुहोस् ।</value>
+          </text>
+          <text id="/data/c82_person/level_of_education:label">
+            <value>पूरा गरेको शैक्षिक तह</value>
+          </text>
+          <text id="/data/c82_person/marital_status/didnt_say:label">
+            <value>भन्न नचाहेको</value>
+          </text>
+          <text id="/data/c82_person/marital_status/divorced:label">
+            <value>सम्बन्धविच्छेद</value>
+          </text>
+          <text id="/data/c82_person/marital_status/living_in:label">
+            <value>विवाह नगरी सँगै बसेको</value>
+          </text>
+          <text id="/data/c82_person/marital_status/married:label">
+            <value>विवाहित</value>
+          </text>
+          <text id="/data/c82_person/marital_status/unmarried:label">
+            <value>अविवाहित</value>
+          </text>
+          <text id="/data/c82_person/marital_status/widowed:label">
+            <value>विधुर / विधवा</value>
+          </text>
+          <text id="/data/c82_person/marital_status:label">
+            <value>वैवाहिक स्थिति</value>
+          </text>
+          <text id="/data/c82_person/occupation/agriculture:label">
+            <value>कृषि</value>
+          </text>
+          <text id="/data/c82_person/occupation/builder:label">
+            <value>डकर्मी</value>
+          </text>
+          <text id="/data/c82_person/occupation/business:label">
+            <value>व्यापार</value>
+          </text>
+          <text id="/data/c82_person/occupation/carpenter:label">
+            <value>सिकर्मी</value>
+          </text>
+          <text id="/data/c82_person/occupation/homemaker:label">
+            <value>गृहिणी/गृहस्थी</value>
+          </text>
+          <text id="/data/c82_person/occupation/job:label">
+            <value>नोकरी</value>
+          </text>
+          <text id="/data/c82_person/occupation/others:label">
+            <value>अन्य</value>
+          </text>
+          <text id="/data/c82_person/occupation/painter:label">
+            <value>पेन्टर</value>
+          </text>
+          <text id="/data/c82_person/occupation/porter:label">
+            <value>भारी बोक्ने</value>
+          </text>
+          <text id="/data/c82_person/occupation/sewing_knitting:label">
+            <value>सिलाई/बुनाई</value>
+          </text>
+          <text id="/data/c82_person/occupation/student:label">
+            <value>विद्यार्थी</value>
+          </text>
+          <text id="/data/c82_person/occupation/unemployed:label">
+            <value>बेरोजगार</value>
+          </text>
+          <text id="/data/c82_person/occupation:label">
+            <value>पेसा</value>
+          </text>
+          <text id="/data/c82_person/phone:jr:constraintMsg">
+            <value>कृपया वैधानिक स्थानीय नम्बर वा अन्तर्राष्ट्रिय नमुना अनुसार (+) र देशको कोड समेत लेख्नुहोस् I उदाहरणको लागि +9779841239876</value>
+          </text>
+          <text id="/data/c82_person/phone:label">
+            <value>फोन नम्बर</value>
+          </text>
+          <text id="/data/c82_person/relation/brother_sister:label">
+            <value>दाजु/भाइ वा दिदि/बहिनी</value>
+          </text>
+          <text id="/data/c82_person/relation/brother_sister_inlaw:label">
+            <value>भाउजु वा भाइ-बुहारी</value>
+          </text>
+          <text id="/data/c82_person/relation/dont_know:label">
+            <value>थाहा छैन</value>
+          </text>
+          <text id="/data/c82_person/relation/grand_son_daughter:label">
+            <value>नाति वा नातिनी</value>
+          </text>
+          <text id="/data/c82_person/relation/house_head:label">
+            <value>घर मुली</value>
+          </text>
+          <text id="/data/c82_person/relation/mother_father:label">
+            <value>आमा वा बाबु</value>
+          </text>
+          <text id="/data/c82_person/relation/mother_father_inlaw:label">
+            <value>सासु वा ससुरा</value>
+          </text>
+          <text id="/data/c82_person/relation/niece_nephew:label">
+            <value>भतिजी/भतिजा</value>
+          </text>
+          <text id="/data/c82_person/relation/no_relationship:label">
+            <value>नाता छैन</value>
+          </text>
+          <text id="/data/c82_person/relation/others:label">
+            <value>अन्य नातेदार</value>
+          </text>
+          <text id="/data/c82_person/relation/second_wife:label">
+            <value>दोस्रो पत्नी</value>
+          </text>
+          <text id="/data/c82_person/relation/son_daughter:label">
+            <value>छोरा वा छोरी</value>
+          </text>
+          <text id="/data/c82_person/relation/son_daughter_adopted:label">
+            <value>धर्म छोरा/छोरी</value>
+          </text>
+          <text id="/data/c82_person/relation/son_daughter_inlaw:label">
+            <value>ज्वाइँ वा बुहारी</value>
+          </text>
+          <text id="/data/c82_person/relation/wife_husband:label">
+            <value>पत्नी वा पति</value>
+          </text>
+          <text id="/data/c82_person/relation:label">
+            <value>घरमुली सँगको नाता</value>
+          </text>
+          <text id="/data/c82_person/religion/buddhist:label">
+            <value>बौद्ध</value>
+          </text>
+          <text id="/data/c82_person/religion/christian:label">
+            <value>ईसाई</value>
+          </text>
+          <text id="/data/c82_person/religion/didnt_say:label">
+            <value>भन्न नचाहेको</value>
+          </text>
+          <text id="/data/c82_person/religion/hindu:label">
+            <value>हिन्दु</value>
+          </text>
+          <text id="/data/c82_person/religion/kirat:label">
+            <value>किराँत</value>
+          </text>
+          <text id="/data/c82_person/religion/muslim:label">
+            <value>मुस्लिम</value>
+          </text>
+          <text id="/data/c82_person/religion/others:label">
+            <value>अन्य</value>
+          </text>
+          <text id="/data/c82_person/religion:label">
+            <value>धर्म</value>
+          </text>
+          <text id="/data/init/name:label">
+            <value>-</value>
+          </text>
+          <text id="/data/init/note_required_fields:hint">
+            <value>(*अनिवार्य भर्नुपर्ने)</value>
+          </text>
+          <text id="/data/init/parent_id:hint">
+            <value><output value=" /data/init/type_label "/></value>
+          </text>
+          <text id="/data/init/parent_id:label">
+            <value>मातहतमा</value>
+          </text>
+          <text id="/data/init/type:label">
+            <value>-</value>
+          </text>
+          <text id="/data/init/type_selector/c80_household:label">
+            <value>घर धुरी</value>
+          </text>
+          <text id="/data/init:label">
+            <value>नयाँ सदस्य दर्ता</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <data delimiter="#" id="contact:c82_person:create" prefix="J1!contact:c82_person:create!" version="2021-08-06 17-29">
+          <inputs>
+            <meta>
+              <location>
+                <lat/>
+                <long/>
+                <error/>
+                <message/>
+              </location>
+            </meta>
+            <user>
+              <contact_id/>
+              <facility_id/>
+              <name/>
+            </user>
+          </inputs>
+          <c82_person>
+            <parent>PARENT</parent>
+            <type>contact</type>
+            <contact_type>c82_person</contact_type>
+            <first_name/>
+            <last_name/>
+            <name/>
+            <date_of_birth/>
+            <age_in_years/>
+            <gender/>
+            <add_phone/>
+            <phone>+977</phone>
+            <religion/>
+            <relation/>
+            <marital_status/>
+            <is_disabled/>
+            <disability/>
+            <disability_severity/>
+            <disability_card/>
+            <disability_start/>
+            <disability_start_date/>
+            <level_of_education/>
+            <occupation/>
+            <caste_code/>
+            <meta tag="hidden">
+              <created_by/>
+              <created_by_person_uuid/>
+              <created_by_place_uuid/>
+            </meta>
+          </c82_person>
+          <init>
+            <note_required_fields/>
+            <parent_id/>
+            <name/>
+            <type/>
+            <type_selector/>
+            <type_label/>
+          </init>
+          <meta tag="hidden">
+            <instanceID/>
+          </meta>
+        </data>
+      </instance>
+      <bind nodeset="/data/inputs" relevant="0"/>
+      <bind nodeset="/data/inputs/user/contact_id" type="string"/>
+      <bind nodeset="/data/inputs/user/facility_id" type="string"/>
+      <bind nodeset="/data/inputs/user/name" type="string"/>
+      <bind nodeset="/data/init/note_required_fields" readonly="true()" type="string"/>
+      <bind calculate=" /data/c82_person/parent " nodeset="/data/init/parent_id" readonly="true()" type="string"/>
+      <bind nodeset="/data/init/name" type="string"/>
+      <bind nodeset="/data/init/type" type="string"/>
+      <bind calculate="../type" nodeset="/data/init/type_selector" type="select1"/>
+      <bind calculate="jr:choice-name( /data/init/type_selector ,' /data/init/type_selector ')" nodeset="/data/init/type_label" type="string"/>
+      <bind nodeset="/data/c82_person/parent" type="string"/>
+      <bind nodeset="/data/c82_person/type" type="string"/>
+      <bind nodeset="/data/c82_person/contact_type" type="string"/>
+      <bind constraint="string-length(.)&lt;=30" jr:constraintMsg="jr:itext('/data/c82_person/first_name:jr:constraintMsg')" nodeset="/data/c82_person/first_name" required="true()" type="string"/>
+      <bind constraint="string-length(.)&lt;=30 and regex(.,'^([^0-9]*)$')" jr:constraintMsg="jr:itext('/data/c82_person/last_name:jr:constraintMsg')" nodeset="/data/c82_person/last_name" required="true()" type="string"/>
+      <bind calculate="concat( /data/c82_person/first_name , ' ',  /data/c82_person/last_name )" nodeset="/data/c82_person/name" type="string"/>
+      <bind constraint="decimal-date-time(.) &lt;= floor(decimal-date-time(today()))" jr:constraintMsg="jr:itext('/data/c82_person/date_of_birth:jr:constraintMsg')" nodeset="/data/c82_person/date_of_birth" required="true()" type="date"/>
+      <bind calculate="floor(difference-in-months(  /data/c82_person/date_of_birth , today() ) div 12 )" nodeset="/data/c82_person/age_in_years" type="string"/>
+      <bind nodeset="/data/c82_person/gender" required="true()" type="select1"/>
+      <bind nodeset="/data/c82_person/add_phone" type="select1"/>
+      <bind jr:constraintMsg="jr:itext('/data/c82_person/phone:jr:constraintMsg')" nodeset="/data/c82_person/phone" relevant=" /data/c82_person/add_phone  = 'yes'" type="tel"/>
+      <bind nodeset="/data/c82_person/religion" required="true()" type="select1"/>
+      <bind nodeset="/data/c82_person/relation" required="true()" type="select1"/>
+      <bind nodeset="/data/c82_person/marital_status" required="true()" type="select1"/>
+      <bind nodeset="/data/c82_person/is_disabled" required="true()" type="select1"/>
+      <bind nodeset="/data/c82_person/disability" relevant=" /data/c82_person/is_disabled  = 'yes'" required="true()" type="select"/>
+      <bind nodeset="/data/c82_person/disability_severity" relevant=" /data/c82_person/is_disabled  = 'yes'" required="true()" type="select1"/>
+      <bind nodeset="/data/c82_person/disability_card" relevant=" /data/c82_person/is_disabled  = 'yes'" required="true()" type="select1"/>
+      <bind nodeset="/data/c82_person/disability_start" relevant=" /data/c82_person/is_disabled  = 'yes'" required="true()" type="select1"/>
+      <bind nodeset="/data/c82_person/disability_start_date" relevant=" /data/c82_person/disability_start  = 'after_birth'" type="date"/>
+      <bind nodeset="/data/c82_person/level_of_education" relevant=" /data/c82_person/age_in_years  &gt;= 5" required="true()" type="select1"/>
+      <bind nodeset="/data/c82_person/occupation" relevant=" /data/c82_person/age_in_years  &gt;= 14" required="true()" type="select1"/>
+      <bind nodeset="/data/c82_person/caste_code" required="true()" type="select1"/>
+      <bind calculate="../../../inputs/user/name" nodeset="/data/c82_person/meta/created_by" type="string"/>
+      <bind calculate="../../../inputs/user/contact_id" nodeset="/data/c82_person/meta/created_by_person_uuid" type="string"/>
+      <bind calculate="../../../inputs/user/facility_id" nodeset="/data/c82_person/meta/created_by_place_uuid" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/data/meta/instanceID" readonly="true()" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <group ref="/data/inputs">
+      <group ref="/data/inputs/user">
+        <input ref="/data/inputs/user/contact_id"/>
+        <input ref="/data/inputs/user/facility_id"/>
+        <input ref="/data/inputs/user/name"/>
+      </group>
+    </group>
+    <group ref="/data/init">
+      <label ref="jr:itext('/data/init:label')"/>
+      <input ref="/data/init/note_required_fields"/>
+      <input appearance="db-object" ref="/data/init/parent_id">
+        <label ref="jr:itext('/data/init/parent_id:label')"/>
+        <hint ref="jr:itext('/data/init/parent_id:hint')"/>
+      </input>
+      <select1 appearance="hidden" ref="/data/init/type_selector">
+        <item>
+          <label ref="jr:itext('/data/init/type_selector/c80_household:label')"/>
+          <value>c80_household</value>
+        </item>
+      </select1>
+    </group>
+    <group ref="/data/c82_person">
+      <input ref="/data/c82_person/first_name">
+        <label ref="jr:itext('/data/c82_person/first_name:label')"/>
+      </input>
+      <input ref="/data/c82_person/last_name">
+        <label ref="jr:itext('/data/c82_person/last_name:label')"/>
+      </input>
+      <input appearance="bikram-sambat" ref="/data/c82_person/date_of_birth">
+        <label ref="jr:itext('/data/c82_person/date_of_birth:label')"/>
+        <hint ref="jr:itext('/data/c82_person/date_of_birth:hint')"/>
+      </input>
+      <select1 appearance="horizontal" ref="/data/c82_person/gender">
+        <label ref="jr:itext('/data/c82_person/gender:label')"/>
+        <item>
+          <label ref="jr:itext('/data/c82_person/gender/female:label')"/>
+          <value>female</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/gender/male:label')"/>
+          <value>male</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/gender/other:label')"/>
+          <value>other</value>
+        </item>
+      </select1>
+      <select1 ref="/data/c82_person/add_phone">
+        <label ref="jr:itext('/data/c82_person/add_phone:label')"/>
+        <hint ref="jr:itext('/data/c82_person/add_phone:hint')"/>
+        <item>
+          <label ref="jr:itext('/data/c82_person/add_phone/yes:label')"/>
+          <value>yes</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/add_phone/no:label')"/>
+          <value>no</value>
+        </item>
+      </select1>
+      <input ref="/data/c82_person/phone">
+        <label ref="jr:itext('/data/c82_person/phone:label')"/>
+      </input>
+      <select1 ref="/data/c82_person/religion">
+        <label ref="jr:itext('/data/c82_person/religion:label')"/>
+        <item>
+          <label ref="jr:itext('/data/c82_person/religion/hindu:label')"/>
+          <value>hindu</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/religion/buddhist:label')"/>
+          <value>buddhist</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/religion/muslim:label')"/>
+          <value>muslim</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/religion/kirat:label')"/>
+          <value>kirat</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/religion/christian:label')"/>
+          <value>christian</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/religion/others:label')"/>
+          <value>others</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/religion/didnt_say:label')"/>
+          <value>didnt_say</value>
+        </item>
+      </select1>
+      <select1 ref="/data/c82_person/relation">
+        <label ref="jr:itext('/data/c82_person/relation:label')"/>
+        <item>
+          <label ref="jr:itext('/data/c82_person/relation/house_head:label')"/>
+          <value>house_head</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/relation/wife_husband:label')"/>
+          <value>wife_husband</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/relation/son_daughter:label')"/>
+          <value>son_daughter</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/relation/son_daughter_inlaw:label')"/>
+          <value>son_daughter_inlaw</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/relation/grand_son_daughter:label')"/>
+          <value>grand_son_daughter</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/relation/mother_father:label')"/>
+          <value>mother_father</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/relation/mother_father_inlaw:label')"/>
+          <value>mother_father_inlaw</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/relation/brother_sister:label')"/>
+          <value>brother_sister</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/relation/brother_sister_inlaw:label')"/>
+          <value>brother_sister_inlaw</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/relation/niece_nephew:label')"/>
+          <value>niece_nephew</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/relation/second_wife:label')"/>
+          <value>second_wife</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/relation/others:label')"/>
+          <value>others</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/relation/son_daughter_adopted:label')"/>
+          <value>son_daughter_adopted</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/relation/no_relationship:label')"/>
+          <value>no_relationship</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/relation/dont_know:label')"/>
+          <value>dont_know</value>
+        </item>
+      </select1>
+      <select1 ref="/data/c82_person/marital_status">
+        <label ref="jr:itext('/data/c82_person/marital_status:label')"/>
+        <item>
+          <label ref="jr:itext('/data/c82_person/marital_status/married:label')"/>
+          <value>married</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/marital_status/divorced:label')"/>
+          <value>divorced</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/marital_status/widowed:label')"/>
+          <value>widowed</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/marital_status/unmarried:label')"/>
+          <value>unmarried</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/marital_status/living_in:label')"/>
+          <value>living_in</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/marital_status/didnt_say:label')"/>
+          <value>didnt_say</value>
+        </item>
+      </select1>
+      <select1 ref="/data/c82_person/is_disabled">
+        <label ref="jr:itext('/data/c82_person/is_disabled:label')"/>
+        <item>
+          <label ref="jr:itext('/data/c82_person/is_disabled/yes:label')"/>
+          <value>yes</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/is_disabled/no:label')"/>
+          <value>no</value>
+        </item>
+      </select1>
+      <select ref="/data/c82_person/disability">
+        <label ref="jr:itext('/data/c82_person/disability:label')"/>
+        <item>
+          <label ref="jr:itext('/data/c82_person/disability/physical_disability:label')"/>
+          <value>physical_disability</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/disability/hearing_impairment:label')"/>
+          <value>hearing_impairment</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/disability/visual_impairment:label')"/>
+          <value>visual_impairment</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/disability/voice_disabilities:label')"/>
+          <value>voice_disabilities</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/disability/deaf_blind:label')"/>
+          <value>deaf_blind</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/disability/intellectual_disability:label')"/>
+          <value>intellectual_disability</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/disability/mental_psychosocial_disability:label')"/>
+          <value>mental_psychosocial_disability</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/disability/autism:label')"/>
+          <value>autism</value>
+        </item>
+      </select>
+      <select1 ref="/data/c82_person/disability_severity">
+        <label ref="jr:itext('/data/c82_person/disability_severity:label')"/>
+        <item>
+          <label ref="jr:itext('/data/c82_person/disability_severity/complete_disability:label')"/>
+          <value>complete_disability</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/disability_severity/extreme_disability:label')"/>
+          <value>extreme_disability</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/disability_severity/moderate_disability:label')"/>
+          <value>moderate_disability</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/disability_severity/general_disability:label')"/>
+          <value>general_disability</value>
+        </item>
+      </select1>
+      <select1 ref="/data/c82_person/disability_card">
+        <label ref="jr:itext('/data/c82_person/disability_card:label')"/>
+        <item>
+          <label ref="jr:itext('/data/c82_person/disability_card/yes:label')"/>
+          <value>yes</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/disability_card/no:label')"/>
+          <value>no</value>
+        </item>
+      </select1>
+      <select1 ref="/data/c82_person/disability_start">
+        <label ref="jr:itext('/data/c82_person/disability_start:label')"/>
+        <item>
+          <label ref="jr:itext('/data/c82_person/disability_start/from_birth:label')"/>
+          <value>from_birth</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/disability_start/after_birth:label')"/>
+          <value>after_birth</value>
+        </item>
+      </select1>
+      <input appearance="bikram-sambat" ref="/data/c82_person/disability_start_date">
+        <label ref="jr:itext('/data/c82_person/disability_start_date:label')"/>
+        <hint ref="jr:itext('/data/c82_person/disability_start_date:hint')"/>
+      </input>
+      <select1 appearance="horizontal" ref="/data/c82_person/level_of_education">
+        <label ref="jr:itext('/data/c82_person/level_of_education:label')"/>
+        <hint ref="jr:itext('/data/c82_person/level_of_education:hint')"/>
+        <item>
+          <label ref="jr:itext('/data/c82_person/level_of_education/lliterate:label')"/>
+          <value>lliterate</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/level_of_education/literate:label')"/>
+          <value>literate</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/level_of_education/basic_education:label')"/>
+          <value>basic_education</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/level_of_education/secondary_level:label')"/>
+          <value>secondary_level</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/level_of_education/higher_secondary level:label')"/>
+          <value>higher_secondary level</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/level_of_education/graduation_level:label')"/>
+          <value>graduation_level</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/level_of_education/post_graduate:label')"/>
+          <value>post_graduate</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/level_of_education/phd:label')"/>
+          <value>phd</value>
+        </item>
+      </select1>
+      <select1 appearance="horizontal" ref="/data/c82_person/occupation">
+        <label ref="jr:itext('/data/c82_person/occupation:label')"/>
+        <item>
+          <label ref="jr:itext('/data/c82_person/occupation/homemaker:label')"/>
+          <value>homemaker</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/occupation/agriculture:label')"/>
+          <value>agriculture</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/occupation/business:label')"/>
+          <value>business</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/occupation/job:label')"/>
+          <value>job</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/occupation/builder:label')"/>
+          <value>builder</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/occupation/carpenter:label')"/>
+          <value>carpenter</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/occupation/painter:label')"/>
+          <value>painter</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/occupation/porter:label')"/>
+          <value>porter</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/occupation/sewing_knitting:label')"/>
+          <value>sewing_knitting</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/occupation/unemployed:label')"/>
+          <value>unemployed</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/occupation/student:label')"/>
+          <value>student</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/occupation/others:label')"/>
+          <value>others</value>
+        </item>
+      </select1>
+      <select1 appearance="horizontal" ref="/data/c82_person/caste_code">
+        <label ref="jr:itext('/data/c82_person/caste_code:label')"/>
+        <item>
+          <label ref="jr:itext('/data/c82_person/caste_code/dalit:label')"/>
+          <value>dalit</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/caste_code/janajati:label')"/>
+          <value>janajati</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/caste_code/madhesi:label')"/>
+          <value>madhesi</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/caste_code/muslim:label')"/>
+          <value>muslim</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/caste_code/brahmin:label')"/>
+          <value>brahmin</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/caste_code/chhettri:label')"/>
+          <value>chhettri</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/c82_person/caste_code/other:label')"/>
+          <value>other</value>
+        </item>
+      </select1>
+      <group appearance="hidden" ref="/data/c82_person/meta"/>
+    </group>
+  </h:body>
+</h:html>
