@@ -15,7 +15,7 @@ const {
   getActiveDangerSignsBaby,
   getActiveDangerSignsChild,
   getRiskContextNCD,
-  getDiabetesRiskContextReferral,
+  ncdExtractFields,
   getPncServiceDangerSigns,
   getPNCServiceDangerSignReferral,
   getField
@@ -121,7 +121,7 @@ module.exports = [
         type: 'report',
         form: 'pregnancy_home_visit',
         modifyContent: (content, contact, report, event) => {
-          content.visit = event.id.slice(event.id.length - 1,);
+          content.visit = event.id.slice(event.id.length - 1);
 
           const dueDate = event.dueDate(event, contact, report);
           content.current_period_start = addDays(dueDate, -event.start);
@@ -534,8 +534,8 @@ module.exports = [
       {
         form: 'hypertension_referral',
         modifyContent: function (content, contact, report) {
-          const dangerSings = getRiskContextNCD(report);
-          content.danger_sign_code = dangerSings.hypertensionDangerSigns;
+          const dangerSigns = getRiskContextNCD(report, 'hypertension');
+          content.danger_sign_code = dangerSigns.hypertensionDangerSigns;
         }
       }
     ],
@@ -554,15 +554,18 @@ module.exports = [
     appliesTo: 'reports',
     appliesToType: ['hypertension_referral'],
     appliesIf: (contact, report) => {
-      return getField(report, 'hypertension_referral_form.visit_healthfacilities') === 'no';
+      return getField(report, 'hypertension_referral_form.visit_hf') === 'no';
     },
     actions: [
       {
         form: 'hypertension_referral',
         modifyContent: function (content, contact, report) {
-          Object.entries(extras.getHypertensionRiskContextReferral(report)).forEach(([key, value]) => {
+          const context = getRiskContextNCD(report);
+          Object.entries(context).forEach(([key, value]) => {
             content[key] = value;
           });
+          Object.assign(content, context , ncdExtractFields(report, 'hypertension'));
+          
         }
 
       }
@@ -590,8 +593,8 @@ module.exports = [
       {
         form: 'diabetes_referral',
         modifyContent: function (content, contact, report) {
-          const dangerSings = getRiskContextNCD(report);
-          content.danger_sign_code = dangerSings.diabetesDangerSigns;
+          const dangerSigns = getRiskContextNCD(report, 'diabetes');
+          content.danger_sign_code = dangerSigns.diabetesDangerSigns;
         }
       }
     ],
@@ -610,15 +613,17 @@ module.exports = [
     appliesTo: 'reports',
     appliesToType: ['diabetes_referral'],
     appliesIf: (contact, report) => {
-      return getField(report, 'diabetes_referral_form.visit_healthfacilities') === 'no';
+      return getField(report, 'diabetes_referral_form.visit_hf') === 'no';
     },
     actions: [
       {
         form: 'diabetes_referral',
         modifyContent: function (content, contact, report) {
-          Object.entries(getDiabetesRiskContextReferral(report)).forEach(([key, value]) => {
+          const context = getRiskContextNCD(report);
+          Object.entries(context).forEach(([key, value]) => {
             content[key] = value;
           });
+          Object.assign(content, context , ncdExtractFields(report, 'diabetes'));
         }
       }
     ],
@@ -630,6 +635,121 @@ module.exports = [
         end: 15
       },
     ],
+  },
+  {
+    name: 'hypertension',
+    icon: 'icon-child-health-followup',
+    title: 'task.hypertension_session1',
+    appliesTo: 'reports',
+    appliesToType: ['Test_1'],
+    appliesIf: (contact, report) => {
+      const selectedOptions = getField(report, 'pnc_service_info.ch_1');
+      return selectedOptions && selectedOptions.includes('c_1');
+    },    
+    actions: [
+      {
+        type: 'report',
+        form: 'Test_2',
+        modifyContent: function (content) {
+          content.hyp_session = '1';
+          
+        }
+      }
+    ],
+    events: [
+      {
+        start: 30,
+        days: 30,
+        end: 15
+      },
+    ]
+  },
+  {
+    name: 'hypertension2',
+    icon: 'icon-child-health-followup',
+    title: 'task.hypertension_session2',
+    appliesTo: 'reports',
+    appliesToType: ['Test_2'],
+    appliesIf: (contact, report) => {
+      return getField(report, 'hyp_session') === '1';
+    },    
+    actions: [
+      {
+        type: 'report',
+        form: 'Test_2',
+        modifyContent: function (content) {
+          content.hyp_session = '2' ;
+          
+        }
+      }
+    ],
+    events: [
+      {
+        start: 30,
+        days: 30,
+        end: 15
+      },
+    ]
+  },
+  {
+    name: 'diabeties1',
+    icon: 'icon-child-health-followup',
+    title: 'task.diabeties_session1',
+    appliesTo: 'reports',
+    appliesToType: ['Test_2','Test_1'],
+    appliesIf: (contact, report) => {
+      const hypSession = getField(report, 'hyp_session');
+      const selectedOptions = getField(report, 'pnc_service_info.ch_1');
+    
+      return hypSession === '2' || (selectedOptions && !selectedOptions.includes('c_1') && selectedOptions.includes('c_2')); //in this task when hypsession==2 session is the condition we should also keep the condition to check if the diabeties is slected or not this ca be done by pulling the last report of test 1 or action form data. 
+      
+
+    },       
+    actions: [
+      {
+        type: 'report',
+        form: 'Test_2',
+        modifyContent: function (content) {
+          content.dia_session = '1' ;
+          
+        }
+      }
+    ],
+    events: [
+      {
+        start: 30,
+        days: 30,
+        end: 15
+      },
+    ]
+  },
+  {
+    name: 'diabeties2',
+    icon: 'icon-child-health-followup',
+    title: 'task.diabeties_session2',
+    appliesTo: 'reports',
+    appliesToType: ['Test_2'],
+    appliesIf: (contact, report) => {
+      return getField(report, 'dia_session') === '1';
+
+    },       
+    actions: [
+      {
+        type: 'report',
+        form: 'Test_2',
+        modifyContent: function (content) {
+          content.dia_session = '2' ;
+          
+        }
+      }
+    ],
+    events: [
+      {
+        start: 30,
+        days: 30,
+        end: 15
+      },
+    ]
   },
 ];
 
