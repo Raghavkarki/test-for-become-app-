@@ -56,6 +56,23 @@ function generateEventForPncService(visit, { start, due, end }) {
     }
   };
 }
+// function checkConditions(hypSession, diaSession, selectedOptions, selectedOptions1) {
+//   const containsAny = (options, values) => values.some(value => options.includes(value));
+//   const containsAll = (options, values) => values.every(value => options.includes(value));
+//   const containsNone = (options, values) => values.every(value => !options.includes(value));
+
+//   if (selectedOptions1) {
+//     if (hypSession === '2' || diaSession === '2') {
+//       if (containsAny(selectedOptions1, ['c_3', 'c_4'])) {
+//         if (containsNone(selectedOptions1, ['c_1', 'c_2'])) return true;
+//         if (containsAll(selectedOptions1, ['c_1', 'c_2']) && diaSession === '2') return true;
+//       }
+//     }
+//   }
+
+//   return selectedOptions && containsNone(selectedOptions, ['c_1', 'c_2']) && containsAny(selectedOptions, ['c_3', 'c_4']);
+// }
+
 module.exports = [
   {
     name: 'breast_cancer_screening.diagnosis_followup',
@@ -564,8 +581,8 @@ module.exports = [
           Object.entries(context).forEach(([key, value]) => {
             content[key] = value;
           });
-          Object.assign(content, context , ncdExtractFields(report, 'hypertension'));
-          
+          Object.assign(content, context, ncdExtractFields(report, 'hypertension'));
+
         }
 
       }
@@ -623,7 +640,7 @@ module.exports = [
           Object.entries(context).forEach(([key, value]) => {
             content[key] = value;
           });
-          Object.assign(content, context , ncdExtractFields(report, 'diabetes'));
+          Object.assign(content, context, ncdExtractFields(report, 'diabetes'));
         }
       }
     ],
@@ -637,22 +654,22 @@ module.exports = [
     ],
   },
   {
-    name: 'hypertension',
+    name: 'anxiety1',
     icon: 'icon-child-health-followup',
-    title: 'task.hypertension_session1',
+    title: 'task.anxiety_session1',
     appliesTo: 'reports',
     appliesToType: ['Test_1'],
     appliesIf: (contact, report) => {
       const selectedOptions = getField(report, 'pnc_service_info.ch_1');
       return selectedOptions && selectedOptions.includes('c_1');
-    },    
+    },
     actions: [
       {
         type: 'report',
         form: 'Test_2',
         modifyContent: function (content) {
           content.hyp_session = '1';
-          
+
         }
       }
     ],
@@ -665,21 +682,21 @@ module.exports = [
     ]
   },
   {
-    name: 'hypertension2',
+    name: 'anxiety2',
     icon: 'icon-child-health-followup',
-    title: 'task.hypertension_session2',
+    title: 'task.anxiety_session2',
     appliesTo: 'reports',
     appliesToType: ['Test_2'],
     appliesIf: (contact, report) => {
       return getField(report, 'hyp_session') === '1';
-    },    
+    },
     actions: [
       {
         type: 'report',
         form: 'Test_2',
         modifyContent: function (content) {
-          content.hyp_session = '2' ;
-          
+          content.hyp_session = '2';
+
         }
       }
     ],
@@ -692,26 +709,29 @@ module.exports = [
     ]
   },
   {
-    name: 'diabeties1',
+    name: 'depression1',
     icon: 'icon-child-health-followup',
-    title: 'task.diabeties_session1',
+    title: 'task.depression_session1',
     appliesTo: 'reports',
-    appliesToType: ['Test_2','Test_1'],
+    appliesToType: ['Test_2', 'Test_1'],
     appliesIf: (contact, report) => {
       const hypSession = getField(report, 'hyp_session');
       const selectedOptions = getField(report, 'pnc_service_info.ch_1');
-    
-      return hypSession === '2' || (selectedOptions && !selectedOptions.includes('c_1') && selectedOptions.includes('c_2')); //in this task when hypsession==2 session is the condition we should also keep the condition to check if the diabeties is slected or not this ca be done by pulling the last report of test 1 or action form data. 
-      
+      const selectedOptions1 = getField(report, 'previous_ctx');
 
-    },       
+
+      return (hypSession === '2' && selectedOptions1 && selectedOptions1.includes('c_2')) || (selectedOptions && !selectedOptions.includes('c_1') && selectedOptions.includes('c_2')); //in this task when hypsession==2 session is the condition we should also keep the condition to check if the diabeties is slected or not this ca be done by pulling the last report of test 1 or action form data. 
+      // return (hypSession === '2' && selectedOptions && selectedOptions.includes('c_2') );
+      // console.log("helloworld");
+
+    },
     actions: [
       {
         type: 'report',
         form: 'Test_2',
         modifyContent: function (content) {
-          content.dia_session = '1' ;
-          
+          content.dia_session = '1';
+
         }
       }
     ],
@@ -724,22 +744,152 @@ module.exports = [
     ]
   },
   {
-    name: 'diabeties2',
+    name: 'depression2',
     icon: 'icon-child-health-followup',
-    title: 'task.diabeties_session2',
+    title: 'task.depression_session2',
     appliesTo: 'reports',
     appliesToType: ['Test_2'],
     appliesIf: (contact, report) => {
       return getField(report, 'dia_session') === '1';
 
-    },       
+    },
     actions: [
       {
         type: 'report',
         form: 'Test_2',
         modifyContent: function (content) {
-          content.dia_session = '2' ;
-          
+          content.dia_session = '2';
+
+        }
+      }
+    ],
+    events: [
+      {
+        start: 30,
+        days: 30,
+        end: 15
+      },
+    ]
+  },
+  {
+    name: 'Diabetes&Hypertension1',
+    icon: 'icon-child-health-followup',
+    title: 'task.MA_session1',
+    appliesTo: 'reports',
+    appliesToType: ['Test_2', 'Test_1'],
+    appliesIf: (contact, report) => {
+      const hypSession = getField(report, 'hyp_session');
+      const diaSession = getField(report, 'dia_session');
+      const selectedOptions = getField(report, 'pnc_service_info.ch_1');
+      const selectedOptions1 = getField(report, 'previous_ctx');
+
+      // return checkConditions(hypSession, diaSession, selectedOptions, selectedOptions1);
+      return (hypSession === '2' &&
+        selectedOptions1 &&
+        (selectedOptions1.includes('c_3') || selectedOptions1.includes('c_4')) && 
+        !selectedOptions1.includes('c_2')) || (diaSession === '2' &&
+          selectedOptions1 &&
+          (selectedOptions1.includes('c_3') || selectedOptions1.includes('c_4')) &&
+          !selectedOptions1.includes('c_1')) || (diaSession === '2' &&
+            selectedOptions1 &&
+            (selectedOptions1.includes('c_3') || selectedOptions1.includes('c_4')) &&
+            selectedOptions1.includes('c_2') && selectedOptions1.includes('c_1')) ||(selectedOptions && 
+            !selectedOptions.includes('c_1') && !selectedOptions.includes('c_2') 
+            && (selectedOptions.includes('c_3') || selectedOptions.includes('c_4'))); 
+
+
+    },
+    actions: [
+      {
+        type: 'report',
+        form: 'Test_2',
+        modifyContent: function (content) {
+          content.ma_session = '1';
+
+        }
+      }
+    ],
+    events: [
+      {
+        start: 30,
+        days: 30,
+        end: 15
+      },
+    ]
+  },
+  {
+    name: 'Diabetes&Hypertension2',
+    icon: 'icon-child-health-followup',
+    title: 'task.MA_session2',
+    appliesTo: 'reports',
+    appliesToType: ['Test_2'],
+    appliesIf: (contact, report) => {
+      return getField(report, 'ma_session') === '1';
+
+    },
+    actions: [
+      {
+        type: 'report',
+        form: 'Test_2',
+        modifyContent: function (content) {
+          content.ma_session = '2';
+
+        }
+      }
+    ],
+    events: [
+      {
+        start: 30,
+        days: 30,
+        end: 15
+      },
+    ]
+  },
+  {
+    name: 'Diabetes&Hypertension3',
+    icon: 'icon-child-health-followup',
+    title: 'task.MA_session3',
+    appliesTo: 'reports',
+    appliesToType: ['Test_2'],
+    appliesIf: (contact, report) => {
+      return getField(report, 'ma_session') === '2';
+
+    },
+    actions: [
+      {
+        type: 'report',
+        form: 'Test_2',
+        modifyContent: function (content) {
+          content.ma_session = '3';
+
+        }
+      }
+    ],
+    events: [
+      {
+        start: 30,
+        days: 30,
+        end: 15
+      },
+    ]
+  },
+  {
+    name: 'Diabetes&Hypertension4',
+    icon: 'icon-child-health-followup',
+    title: 'task.MA_session4',
+    appliesTo: 'reports',
+    appliesToType: ['Test_2'],
+    appliesIf: (contact, report) => {
+      return getField(report, 'ma_session') === '3';
+
+    },
+    actions: [
+      {
+        type: 'report',
+        form: 'Test_2',
+        modifyContent: function (content) {
+          content.ma_session = '4';
+
         }
       }
     ],

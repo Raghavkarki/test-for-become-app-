@@ -93,7 +93,7 @@ function getMostRecentEDDForPregnancy(allReports, report) {
 }
 
 function getDeliveryDate(report) {
-  return isDeliveryForm(report) && getField(report, 'delivery_outcome.delivery_date') && moment(getField(report, 'delivery_outcome.delivery_date'));
+  return isDeliveryForm(report) && getField(report, 'preg_info.delivery_date') && moment(getField(report, 'preg_info.delivery_date'));
 }
 
 function getNextANCVisitDate(allReports, report) {
@@ -345,9 +345,9 @@ function isReadyForNewPregnancy(thisContact, allReports) {
   else {
     //Both pregnancy and delivery report, Delivery report is newer than pregnancy report
     //Decide on the basis of Delivery report
-    if (mostRecentPregnancyReport && getRecentANCVisitWithEvent(allReports, mostRecentPregnancyReport, 'abortion') ||
-      getRecentANCVisitWithEvent(allReports, mostRecentPregnancyReport, 'miscarriage')) {
-      return true;
+    if (mostRecentDeliveryReport) {
+      //Delivery date on most recentlty submitted delivery form is more than 6 weeks ago
+      return getDeliveryDate(mostRecentDeliveryReport) < today.clone().subtract(6 * 7, 'day');
     }
   }
   return false;
@@ -364,10 +364,7 @@ function isReadyForDelivery(thisContact, allReports) {
     //no previous pregnancy, return false
     return false;
   }
-  if (latestPregnancy && !latestDelivery) {
-    // if previous pregnancy but not delivery, return true
-    return true;
-  }
+
   else if (latestDelivery && latestDelivery.reported_date > latestPregnancy.reported_date) {
     // if previous delivery, previous delivery date should be at least 7 months ago.
     return getDeliveryDate(latestDelivery) < today.clone().subtract(7, 'months');
@@ -420,11 +417,11 @@ function getRecentANCVisitWithEvent(allReports, pregnancyReport, event) {
   }
 }
 
-function getSubsequentDeliveries(allReports, pregnancyReport, withinLastXDays) {
+function getSubsequentDeliveries(allReports, pregnancyReport, withinXDays) {
   return allReports.filter(function (report) {
     return (isDeliveryForm(report)) &&
       report.reported_date > pregnancyReport.reported_date &&
-      (!withinLastXDays || report.reported_date >= (today.clone().subtract(withinLastXDays, 'days')));
+      (!withinXDays || pregnancyReport.reported_date >= (moment(report.reported_date).subtract(withinXDays, 'days')));
   });
 }
 
@@ -474,30 +471,37 @@ function getContext(thisContact, allReports) {
   const context = Object.assign({},
     getAge(thisContact) <= 5 ? getChildVaccinations(thisContact, allReports) : {}
   );
+
   context.alive = isAlive(thisContact);
   context.show_pregnancy_form = isReadyForNewPregnancy(thisContact, allReports);
   context.show_delivery_form = isReadyForDelivery(thisContact, allReports);
   context.show_cervical_form = isReadyForCervicalScreening(thisContact, allReports);
 
   if (thisContact.contact_type === 'c82_person' && getAge(thisContact) >= 30) {
-    const [bmiresult, bmicalculation] = [getLatestBmi(allReports, 'hypertension', 'bmi_result'), getLatestBmi(allReports, 'hypertension', 'bmi_cal')];
-    const [bmiresult1, bmicalculation1] = [getLatestBmi(allReports, 'diabetes', 'bmi_result'), getLatestBmi(allReports, 'diabetes', 'bmi_cal')];
-    const { systolic, diastolic, average } = getLatestBloodPressure(allReports, 'hypertension_screening');
-    const latestScreeningReport = getNewestReport(reports, 'diabetes_screening');
-    const glucometerData = getField(latestScreeningReport, 'diabetes_screening.glucometer');
-    const dt_pss_rbs = getField(latestScreeningReport, 'dt_pps_rbs');
-    const dt_fbs = getField(latestScreeningReport, 'dt_fbs');
-    context.avg_result = average;
-    context.diastolic_result = diastolic;
-    context.systolic_result = systolic;
-    context.bmi_result_ctx = bmiresult;
-    context.bmical_show_ctx = bmicalculation;
-    context.bmical_show_ctx_diabetes = bmicalculation1;
-    context.bmi_result_ctx_diabetes = bmiresult1;
-    context.glucometer_ctx = glucometerData;
-    context.dt_pps_rbs_ctx = dt_pss_rbs;
-    context.dt_fbs_ctx = dt_fbs;
-    
+    const hasNcdRecord = allReports.some(report => ['hypertension_screening', 'diabetes_screening'].includes(report.form));
+    if (hasNcdRecord) {
+      //hypertension
+      const [bmiForHypertension, bmiHypertensionResult] = [ncdBmiCalculation(allReports, 'bmi_result'), ncdBmiCalculation(allReports, 'bmi_cal')];
+      const { systolic, diastolic, average } = getLatestBloodPressure(allReports, 'hypertension_screening');
+      context.avg_result = average;
+      context.diastolic_result = diastolic;
+      context.systolic_result = systolic;
+      context.bmi_result_ctx = bmiForHypertension;
+      context.bmical_show_ctx = bmiHypertensionResult;
+      context.bmi_previous_ctx = 'yes' ;
+      //diabetes
+      const [bmiForDiabetes, bmiDiabetesResult] = [ncdBmiCalculation(allReports, 'bmi_cal'), ncdBmiCalculation(allReports, 'bmi_result')];
+      const latestDiabetesScreeningReport = getNewestReport(reports, 'diabetes_screening');
+      const glucometerData = getField(latestDiabetesScreeningReport, 'diabetes_screening.glucometer');
+      const dangerTriggerForPssRbs = getField(latestDiabetesScreeningReport, 'dt_pps_rbs');
+      const dangerTriggerForFbs = getField(latestDiabetesScreeningReport, 'dt_fbs');
+
+      context.bmi_result_ctx_diabetes = bmiDiabetesResult;
+      context.bmical_show_ctx_diabetes = bmiForDiabetes;
+      context.glucometer_ctx = glucometerData;
+      context.dt_pps_rbs_ctx = dangerTriggerForPssRbs;
+      context.dt_fbs_ctx = dangerTriggerForFbs;
+    }
   }
   if (thisContact.contact_type === 'c82_person' && thisContact.gender === 'female') {
     const deliveryRecord = allReports.some(report => report.form === 'delivery');
@@ -541,26 +545,57 @@ function getContext(thisContact, allReports) {
       }
     }
   }
+  if (thisContact.contact_type === 'c82_person') {
+    const becomedata = allReports.some( report  => ['Test_1'].includes(report.form));
+    if (becomedata) {
+      const getlatestbecomeforms = getNewestReport(reports,'Test_1');
+      const getbecomedata = getField (getlatestbecomeforms,'pnc_service_info.ch_1');
+      context.previous_ctx = getbecomedata;
+      console.log(getbecomedata,'getdata');
+    }
+      
+  }
 
   return context;
 }
 
+const filterRecentNCDReports = (reports) => {
+  const today = new Date();
+  const thresholdDate = new Date(today.setDate(today.getDate() - 45)); 
 
-const getLatestBmi = (reports, screeningType, field) => {
-  const latestScreeningReport = getNewestReport(reports, `${screeningType}_screening`);
-  return getField(latestScreeningReport, `${screeningType}_screening.${field}`);
+  const isRecentReport = (reportDate) => new Date(reportDate) >= thresholdDate;
+  const isRelevantForm = (form) => form === 'hypertension_screening' || form === 'diabetes_screening';
+
+  let oldestReport = null;
+
+  for (const report of reports) {
+    if (isRelevantForm(report.form) && isRecentReport(report.reported_date)) {
+      if (!oldestReport || new Date(report.reported_date) < new Date(oldestReport.reported_date)) {
+        oldestReport = report;
+      }
+    }
+  }
+
+  return oldestReport;
+};
+
+const ncdBmiCalculation = (reports, field) => {
+  const reportData = filterRecentNCDReports(reports);
+  return reportData ? getField(reportData, `${reportData.form}.${field}`) : null;
 };
 
 const getLatestBloodPressure = (reports, type) => {
-  const { fields } = getNewestReport(reports, type) || {};
-  const { hypertension_screening } = fields || {};
+  const newestReport = getNewestReport(reports, type);
+  const fields = newestReport ? newestReport.fields : {};
+  const hypertensionScreening = fields ? fields.hypertension_screening : null;
+
   return {
-    systolic: hypertension_screening ? hypertension_screening.systolic_p : null,
-    diastolic: hypertension_screening ? hypertension_screening.daistolic_p : null,
-    average: hypertension_screening ? hypertension_screening.avg_p : null,
+    systolic: hypertensionScreening ? hypertensionScreening.systolic_p : null,
+    diastolic: hypertensionScreening ? hypertensionScreening.diastolic_p : null,
+    average: hypertensionScreening ? hypertensionScreening.avg_p : null,
   };
 };
-  
+
 const daysSinceDelivery = (reports) => {
   const deliveryDate = getField(getNewestReport(reports, 'delivery'), 'preg_info.delivery_date');
   return deliveryDate ? moment().diff(moment(deliveryDate), 'days') : null;
